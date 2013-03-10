@@ -394,6 +394,10 @@ def handle_configuration():
         os.path.expanduser(os.sep.join(('~', '.httproxy', 'config'))),
         cmdline_args.get('--configfile') or '',
     ])
+    
+    if not 'main' in inifile.sections():
+        inifile.add_section('main')
+        
     iniconf = dict(inifile['main'])
     for opt in iniconf:
         try:
